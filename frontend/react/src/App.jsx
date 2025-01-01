@@ -16,7 +16,9 @@ const App = () => {
   return (
     <div className="container">
       <div className="card">
-        <h1 className="title">商品広告生成アプリ</h1>
+        <h1 className="title">
+          <span className="title-highlight">商品広告生成アプリ</span>
+        </h1>
         <h2 className="subtitle">商品詳細</h2>
 
         <ProductForm
