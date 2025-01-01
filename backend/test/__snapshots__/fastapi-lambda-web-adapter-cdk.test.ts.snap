@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test 1`] = `
+{
+  "Outputs": {
+    "FastAPIFunctionArn": {
+      "Description": "FastAPI Lambda Function ARN",
+      "Value": {
+        "Fn::GetAtt": [
+          "FastAPIFunction5BED16B4",
+          "Arn",
+        ],
+      },
+    },
+    "FastAPIFunctionUrl": {
+      "Description": "Function URL for FastAPI function",
+      "Value": {
+        "Fn::GetAtt": [
+          "FastAPIFunctionFunctionUrl0368C2DA",
+          "FunctionUrl",
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "FastAPIFunction5BED16B4": {
+      "DependsOn": [
+        "FastAPIFunctionServiceRoleDefaultPolicy6AA8C837",
+        "FastAPIFunctionServiceRole6CDBDBF4",
+      ],
+      "Properties": {
+        "Code": {
+          "ImageUri": {
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:abf5b0534a4f632cbf064375cd09a83ca27d5d0875dbca3958ae1e44fa2e8ff7",
+          },
+        },
+        "MemorySize": 512,
+        "PackageType": "Image",
+        "Role": {
+          "Fn::GetAtt": [
+            "FastAPIFunctionServiceRole6CDBDBF4",
+            "Arn",
+          ],
+        },
+        "Timeout": 300,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "FastAPIFunctionFunctionUrl0368C2DA": {
+      "Properties": {
+        "AuthType": "NONE",
+        "InvokeMode": "RESPONSE_STREAM",
+        "TargetFunctionArn": {
+          "Fn::GetAtt": [
+            "FastAPIFunction5BED16B4",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Url",
+    },
+    "FastAPIFunctionServiceRole6CDBDBF4": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "FastAPIFunctionServiceRoleDefaultPolicy6AA8C837": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": "bedrock:InvokeModel",
+              "Effect": "Allow",
+              "Resource": "*",
+              "Sid": "BedrockInvokePolicy",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "FastAPIFunctionServiceRoleDefaultPolicy6AA8C837",
+        "Roles": [
+          {
+            "Ref": "FastAPIFunctionServiceRole6CDBDBF4",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "FastAPIFunctioninvokefunctionurl02E09B9C": {
+      "Properties": {
+        "Action": "lambda:InvokeFunctionUrl",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "FastAPIFunction5BED16B4",
+            "Arn",
+          ],
+        },
+        "FunctionUrlAuthType": "NONE",
+        "Principal": "*",
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
