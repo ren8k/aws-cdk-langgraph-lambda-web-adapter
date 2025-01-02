@@ -7,4 +7,5 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 ENV AWS_LWA_INVOKE_MODE RESPONSE_STREAM
 # ENV AWS_LWA_PORT 8080
+EXPOSE 8080
 CMD ["python", "main.py"]
