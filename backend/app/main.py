@@ -9,7 +9,7 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-# CORSミドルウェアを追加
+# CORSミドルウェアの設定
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
