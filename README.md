@@ -84,6 +84,8 @@ cd frontend/react
 npm ci
 # `config/api.js` の変数 `LAMBDA_URL` に Lambda Function URL を設定
 npm run build
+cd ../cdk-cloudfront-s3
+npm ci
 cdk deploy
 ```
 
