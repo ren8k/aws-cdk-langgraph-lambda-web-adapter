@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Prerequisites
+
+You need to paste the Lambda function URL in the `src/config/api.js` file. The URL is the one that is generated when you deploy the Lambda function in the `backend` directory using cdk.
+
 ## Available Scripts
 
 In the project directory, you can run:
