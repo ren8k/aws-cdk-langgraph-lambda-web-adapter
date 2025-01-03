@@ -1,10 +1,10 @@
 # Streaming Workflow Agent with LangGraph and React using Lambda Web Adapter
 
-LangGraph，React，AWS Lambda Web Adapter を組み合わせて，ワークフロー型 AI エージェントのレスポンスをサーバーレスでストリーミング出力します．
+LangGraph，React，AWS Lambda Web Adapter を組み合わせて，workflow 型 の AI Agent のレスポンスをサーバーレスでストリーミング出力します．
 
 ![architecture](./assets/architecture.png)
 
-Agent として，以下のような workflow 型の Agent を LangGraph で実装しています．
+また，以下のような workflow 型の Agent を LangGraph で実装しています．
 
 ```mermaid
 %%{init: {'flowchart': {'curve': 'linear'}}}%%
@@ -25,6 +25,8 @@ React アプリ上で，LangGraph で実装した Agent のストリーミング
 
 ![demo](./assets/demo_lwa_react.gif)
 
+以下に各コンポーネントの特徴を示します．
+
 ### バックエンド
 
 - Lambda Web Adapter (LWA) で FastAPI を Lambda 上で実行
@@ -41,13 +43,14 @@ React アプリ上で，LangGraph で実装した Agent のストリーミング
 
 ### デモアプリケーション
 
-- 商品情報を入力
-- LangGraph エージェントが以下を順次実行:
+- 商品情報を入力とし，workflow 型の Agent が以下を順次実行:
   - 商品の広告文を生成
   - ターゲット顧客層を分析
 - 結果をリアルタイムにストリーミング表示
 
 ## デプロイ
+
+CDK を利用して，バックエンドとフロントエンドをデプロイします．
 
 ### 前提条件
 
@@ -87,6 +90,8 @@ cdk deploy
 ## ローカル開発
 
 ### バックエンド
+
+Agent は `backend/app/agent.py` に実装しており，API は `backend/app/main.py` に実装しています．以下の手順でローカルで実行可能です．
 
 ```bash
 cd backend/app
