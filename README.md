@@ -79,11 +79,20 @@ cdk deploy
 
 3. フロントエンドのデプロイ
 
+- React アプリのビルド
+
 ```bash
 cd frontend/react
 npm ci
 # `config/api.js` の変数 `LAMBDA_URL` に Lambda Function URL を設定
 npm run build
+```
+
+- CloudFront と S3 Bucket のデプロイ
+
+```bash
+cd ../cdk-cloudfront-s3
+npm ci
 cdk deploy
 ```
 
