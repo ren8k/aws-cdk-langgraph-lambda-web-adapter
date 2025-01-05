@@ -1,10 +1,15 @@
 # Streaming Workflow Agent with LangGraph and React using Lambda Web Adapter
 
+> [!NOTE]
+> 本実装の解説記事を Qiita に投稿しております．是非そちらもご覧下さい！
+>
+> [workflow 型の Agent (LangGraph) を Lambda でストリーミング実行し，React アプリで表示する](https://qiita.com/ren8k/items/8525fb170c13ec861857)
+
 LangGraph，React，AWS Lambda Web Adapter を組み合わせて，workflow 型 の AI Agent のレスポンスをサーバーレスでストリーミング出力します．
 
 ![architecture](./assets/architecture.png)
 
-また，以下のような workflow 型の Agent を LangGraph で実装しています．
+Agent として，以下のような workflow 型の Agent を LangGraph で実装しています．
 
 ```mermaid
 %%{init: {'flowchart': {'curve': 'linear'}}}%%
